@@ -10,7 +10,7 @@ void loop();
 SYSTEM_MODE(MANUAL);
 SYSTEM_THREAD(ENABLED);
 
-uint16_t value; 
+uint8_t value; 
 
 
 void setup() {

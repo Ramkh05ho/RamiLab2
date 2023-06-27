@@ -35,9 +35,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  15 .debug_line   000342f2  00000000  00000000  0019a33c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_str    0012d814  00000000  00000000  001ce62e  2**0
+ 16 .debug_str    0012d7ad  00000000  00000000  001ce62e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_frame  000067ac  00000000  00000000  002fbe44  2**2
+ 17 .debug_frame  000067ac  00000000  00000000  002fbddc  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -173,7 +173,7 @@ void __cxa_guard_release (__guard *g) {*(char *)g = 1;};
 000b40aa <setup>:
 SYSTEM_THREAD(ENABLED);
 
-uint16_t value; 
+uint8_t value; 
 
 
 void setup() {
@@ -200,7 +200,7 @@ void loop() {
    b40c6:	200e      	movs	r0, #14
    b40c8:	f000 fe5e 	bl	b4d88 <analogRead>
    b40cc:	4c0d      	ldr	r4, [pc, #52]	; (b4104 <loop+0x40>)
-   b40ce:	8020      	strh	r0, [r4, #0]
+   b40ce:	7020      	strb	r0, [r4, #0]
   Serial.println(value);   
    b40d0:	f000 fcf2 	bl	b4ab8 <_Z16_fetch_usbserialv>
             val = n;
@@ -209,7 +209,7 @@ void loop() {
 #pragma GCC diagnostic pop
 #endif // __GNUC__ >= 9
         return printNumber(val, base) + t;
-   b40d4:	8821      	ldrh	r1, [r4, #0]
+   b40d4:	7821      	ldrb	r1, [r4, #0]
    b40d6:	220a      	movs	r2, #10
    b40d8:	4605      	mov	r5, r0
    b40da:	f000 fbf2 	bl	b48c2 <_ZN5Print11printNumberEmh>
@@ -217,14 +217,14 @@ void loop() {
    b40de:	4628      	mov	r0, r5
    b40e0:	f000 fbe3 	bl	b48aa <_ZN5Print7printlnEv>
   delay(value);
-   b40e4:	8820      	ldrh	r0, [r4, #0]
+   b40e4:	7820      	ldrb	r0, [r4, #0]
    b40e6:	f000 f9ef 	bl	b44c8 <delay>
   digitalWrite(D5, HIGH);
    b40ea:	2101      	movs	r1, #1
    b40ec:	2005      	movs	r0, #5
    b40ee:	f000 fe32 	bl	b4d56 <digitalWrite>
   delay(value);
-   b40f2:	8820      	ldrh	r0, [r4, #0]
+   b40f2:	7820      	ldrb	r0, [r4, #0]
    b40f4:	f000 f9e8 	bl	b44c8 <delay>
   digitalWrite(D5,LOW);
 
